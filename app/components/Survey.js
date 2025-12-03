@@ -11,11 +11,7 @@ const customCss = {
     answered: "question-answered",
     titleRequired: "question-required-title",
   },
-  progressBar: {
-    root: "custom-progress-root",
-    bar: "custom-progress-bar",
-    text: "custom-progress-text",
-  },
+  
 };
 
 
@@ -284,10 +280,8 @@ const surveyJson = {
   ],
   showProgressBar: true,
   progressBarType: "questions",
-  showTOC: true,
   pagePrevText: "Back",
   pageNextText: "Next Step",
-  gridLayoutEnabled: true,
   headerView: "advanced",
 };
 
