@@ -1,0 +1,56 @@
+.question-answered {
+  background-color: rgba(25, 179, 148, 0.05);
+}
+
+.question-content .question-root {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  border-left: 4px solid #18a689;
+  padding: 20px;
+}
+
+.question-content .question-root-checkboxes {
+  border-left: 4px solid orange;
+}
+
+.question-title-required {
+  color: #0a0ee6;
+}
+
+.custom-title {
+  font-size: 18px;        /* bigger font */
+  margin-bottom: 6px;     /* spacing below title */
+}
+
+
+/* progress bar container */
+.custom-progress-root {
+  height: 20px;
+  background-color: #e0e0e0;       /* light gray background */
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+/* filled portion */
+.custom-progress-bar {
+  height: 100%;
+  width: 0%;                        /* SurveyJS will control width */
+  background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+  border-radius: 12px 0 0 12px;
+  transition: width 0.4s ease-in-out;
+}
+
+/* optional percentage text */
+.custom-progress-text {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 600;
+  font-size: 14px;
+  color: #222;
+}
+

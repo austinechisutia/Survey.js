@@ -2,219 +2,308 @@
 import { Model } from 'survey-core';
 import { Survey } from 'survey-react-ui';
 import 'survey-core/survey-core.css';
-import "../surveyStyles.css";
+import "./surveyStyles.css";
+
+
+const customCss = {
+  question: {
+    content: "question-content",
+    answered: "question-answered",
+    titleRequired: "question-required-title",
+  },
+  progressBar: {
+    root: "custom-progress-root",
+    bar: "custom-progress-bar",
+    text: "custom-progress-text",
+  },
+};
 
 
 
 const surveyJson = {
   title: "Better Evidence",
-  checkErrorsMode: "onValueChanged",
-  textUpdateMode: "onTyping",
-  showProgressBar: "top",
+  description: "Auto save",
   pages: [
     {
       name: "page1",
-      title: "Personal Info",
+      title: "Persona Info",
       elements: [
         {
           type: "text",
-          name: "First Name",
+          name: "question1",
           title: "First Name",
+          autocomplete: "name",
           placeholder: "Abebe",
-          isRequired: true,
-          requiredErrorText: "Value cannot be empty",
         },
         {
           type: "text",
-          name: "Last Name",
+          name: "question2",
           title: "Last Name",
-          placeholder: "Kebende",
-          isRequired: true,
-          requiredErrorText: "Value cannot be empty",
+          autocomplete: "name",
+          placeholder: "Kebede",
         },
         {
           type: "dropdown",
-          name: "Title/Degree",
+          name: "question3",
           title: "Title/Degree",
-          choices: ["Mr.", "Mrs.", "Dr.", "Prof"],
-          isRequired: true,
-          requiredErrorText: "Value cannot be empty",
+          choices: ["Item 1", "Item 2", "Item 3"],
+          autocomplete: "name",
         },
         {
           type: "rating",
-          name: "Gender",
-          title: "Gender",
-          width: "100%",
+          name: "question4",
+          titleLocation: "hidden",
+          autoGenerate: false,
           rateCount: 3,
           rateValues: [
             {
               value: 1,
-              text: "Male",
+              text: "Man",
             },
             {
               value: 2,
-              text: "Women",
+              text: "Woman",
             },
             {
               value: 3,
               text: "Prefer not to say",
             },
           ],
-
-          isRequired: true,
-          requiredErrorText: "Value cannot be empty",
+          rateMin: 2,
+          rateMax: 4,
+          displayRateDescriptionsAsExtremeItems: true,
+          displayMode: "buttons",
         },
         {
           type: "text",
-          inputType: "number",
-          name: "Age",
+          name: "question5",
           title: "Age",
-          placeholder: "Enter your Age",
-          isRequired: true,
-          requiredErrorText: "Value cannot be empty",
-        },
-        {
-          type: "text",
-          inputType: "email",
-          name: "Email",
-          title: "Email",
-          placeholder: "user@gmail.com",
-          isRequired: true,
-          requiredErrorText: "Value cannot be empty",
-        },
-        {
-          type: "text",
           inputType: "number",
-          name: "Age",
-          title: "Phone Number",
-          placeholder: "+254768400317",
-          isRequired: true,
-          requiredErrorText: "Value cannot be empty",
+          placeholder: "Enter Your Age",
+        },
+        {
+          type: "text",
+          name: "question6",
+          title: "Email",
+          inputType: "email",
+        },
+        {
+          type: "text",
+          name: "question7",
+          title: "Phone number",
+          inputType: "tel",
+          autocomplete: "tel-country-code",
+          placeholder: "+2547....",
         },
         {
           type: "boolean",
-          name: "enableFeature",
-          title: "Recieve Updates on Whatsapp",
-          titleLocation: "left",
-          startWithNewLine: true,
-          cssClasses: {
-            root: "toggle-row",
-          },
+          name: "question8",
+          title: "Receive Update on WhatsApp",
+          titleLocation: "top",
+          commentText: "Whats",
+          labelTrue: "Yes",
+          labelFalse: "No",
+          swapOrder: true,
         },
         {
           type: "text",
-          inputType: "number",
-          name: "Age",
-          title: "Whatsapp Number",
-          placeholder: "+254768400317",
-          isRequired: true,
-          requiredErrorText: "Value cannot be empty",
+          name: "question9",
+          title: "WhatsApp number",
+          inputType: "tel",
+          autocomplete: "tel-country-code",
         },
       ],
     },
-
     {
       name: "page2",
       title: "Where do you Practice",
       elements: [
         {
           type: "dropdown",
-          name: "country",
+          name: "question10",
           title: "Country",
+          choices: ["Item 1", "Item 2", "Item 3"],
           choicesByUrl: {
             url: "https://surveyjs.io/api/CountriesExample",
-            valueName: "name",
           },
-          isRequired: true,
-          requiredErrorText: "Value cannot be empty",
+        },
+        {
+          type: "dropdown",
+          name: "question11",
+          title: "Primary Speciality",
+          choices: ["Item 1", "Item 2", "Item 3"],
         },
         {
           type: "text",
-          name: "Facility Name",
-          title: "Facility Name",
-          isRequired: true,
-          requiredErrorText: "Value cannot be empty",
-        },
-        {
-          type: "panel",
-          name: "Details",
-          title: "Practice Details",
-          elements: [
-            {
-              type: "dropdown",
-              name: "Role/Profession",
-              title: "Role/Profession",
-            },
-            {
-              type: "dropdown",
-              name: "Speciality",
-              title: "Primary Speciality",
-            },
-            {
-              type: "dropdown",
-              name: "Practice",
-              title: "Practice Setting",
-            },
-          ],
+          name: "question12",
+          title: "Practice Setting",
         },
         {
           type: "boolean",
-          name: "Patient",
+          name: "question13",
           title: "Patient Care",
         },
         {
           type: "boolean",
-          name: "Payment",
+          name: "question14",
           title: "Payment",
         },
         {
           type: "text",
-          inputType: "number",
-          name: "Payment",
-          title: "Average Patients Per week",
+          name: "question15",
+          title: "Average Patients Per Week",
         },
       ],
     },
     {
       name: "page3",
-      title: "Verify and Submit",
-      width: "600%",
-
+      title: "How will you use UpToDate",
       elements: [
         {
-          type: "text",
-          name: "full-name",
-          title: "Identity Check(Veriff)",
-          description: "Pending...",
+          type: "dropdown",
+          name: "question16",
+          title: "Usage Matrix",
+          description: "How often do you use these resources",
+          choices: ["Item 1", "Item 2", "Item 3"],
+          placeholder: "PubMed...",
+          choicesStep: 3,
+        },
+        {
+          type: "rating",
+          name: "question17",
+          titleLocation: "hidden",
+          autoGenerate: false,
+          rateCount: 3,
+          rateValues: [
+            {
+              value: 1,
+              text: "Never",
+            },
+            {
+              value: 2,
+              text: "Sometimes",
+            },
+            {
+              value: 3,
+              text: "Frequently",
+            },
+          ],
+          rateMax: 3,
+          displayMode: "buttons",
+        },
+        {
+          type: "dropdown",
+          name: "question 18",
+          titleLocation: "hidden",
+          choices: ["Item 1", "Item 2", "Item 3"],
+          placeholder: "Medscape...",
+        },
+        {
+          type: "slider",
+          name: "question20",
+          title: "Tech Readiness",
+          description: "Access to device",
+          max: 5,
+        },
+        {
+          type: "boolean",
+          name: "question18",
+          title: "Add Downloadable Desktop Version",
+          titleLocation: "left",
+          validators: [
+            {
+              type: "expression",
+            },
+          ],
+        },
+        {
+          type: "boolean",
+          name: "question21",
+          title: "Interested in CME credits",
+          titleLocation: "left",
+          validators: [
+            {
+              type: "expression",
+            },
+          ],
+        },
+        {
+          type: "comment",
+          name: "question22",
+          title: "Essay",
+          description: "Program Aim Explanation",
+          placeholder: "Explain how this tool helps you and your patients",
+        },
+      ],
+    },
+    {
+      name: "page4",
+      title: "Verify and Submit",
+      description: "Pending...",
+      elements: [
+        {
+          type: "html",
+          name: "question19",
+          maxWidth: "50%",
+          title: "Identity Check (veriff)",
+          description: "Pending",
+          html: "Note: We use veriff to securely confirm your id. It will take 2 minutes",
         },
         {
           type: "image",
-          name: "textImageSection",
-          imageLink:
-            "https://www.pexels.com/photo/cityscape-of-naples-with-view-of-the-galleria-umberto-i-17567462/",
+          name: "question25",
+          maxWidth: "50%",
           startWithNewLine: false,
+          title: "Identity Check (veriff)",
+          description: "Pending",
+          imageLink:
+            "https://api.surveyjs.io/private/Surveys/files?name=a97c42eb-d01f-4bc7-a11e-659e54fa71d5",
+          imageFit: "cover",
+          imageHeight: "auto",
+          imageWidth: "100%",
+        },
+        {
+          type: "file",
+          name: "question23",
+          title: "Proof of Employment",
+          acceptedCategories: ["document", "image"],
+          waitForUpload: true,
+          needConfirmRemoveFile: true,
+          filePlaceholder: "Tap to upload contracts of ID badge (PDF/JPG)",
         },
         {
           type: "text",
-          name: "secure",
-          title: "Verification",
-          placeholder: "Start secure identity check",
-          description: "We use verif to securely confirm your id. It takes 2 minutes"
+          name: "question24",
+          title: "Having trouble?",
+          description: "Can't find your documents right now",
+          inputType: "url",
+          placeholder: "Share location pin",
         },
-        
       ],
     },
   ],
-  questionErrorLocation: "bottom",
+  showProgressBar: true,
+  progressBarType: "questions",
+  showTOC: true,
   pagePrevText: "Back",
   pageNextText: "Next Step",
-  completeText: "Submit Apllication",
+  gridLayoutEnabled: true,
+  headerView: "advanced",
 };
 
 
 
 export default function SurveyComponent() {
   const survey = new Model(surveyJson);
+  survey.css = customCss;
+
+   survey.onUpdateQuestionCssClasses.add(function (_, options) {
+    const q = options.question;
+     const c = options.cssClasses;
+     if (q.name = "First Name") {
+      c.title = "first-name-title";
+     }
+   });
 
   return <Survey model={survey} />;
 }
