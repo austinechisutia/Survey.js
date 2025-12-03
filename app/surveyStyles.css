@@ -26,3 +26,16 @@
 .sv_title h3 {
   margin: 0;
 }
+
+
+.toggle-row {
+  display: flex;
+  justify-content: space-between !important;
+  align-items: center;
+  width: 100%;
+}
+
+/* Ensure boolean switch stays on the right side */
+.toggle-row .sd-boolean__control {
+  margin-left: auto !important;
+}
